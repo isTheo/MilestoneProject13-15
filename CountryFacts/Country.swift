@@ -19,8 +19,12 @@ struct Country: Codable {
 }
 
 
-
-struct Name: Codable {
+//The < function compares two Name objects. It converts the names to lowercase and checks if the name on the left (lhs) comes before the name on the right (rhs) in alphabetical order.
+struct Name: Codable, Comparable {
+    static func < (lhs: Name, rhs: Name) -> Bool {
+        return lhs.common.lowercased() < rhs.common.lowercased()
+    }
+    
     var common: String
     var official: String
 }
