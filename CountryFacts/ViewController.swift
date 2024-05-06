@@ -127,7 +127,13 @@ class ViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //here I'll push the DetailViewController
+        let country = countries[indexPath.row]
+        
+        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            detailVC.country = country
+            
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
     
     
