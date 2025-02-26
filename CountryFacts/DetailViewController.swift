@@ -23,8 +23,11 @@ class DetailViewController: UIViewController {
     
     
     override func loadView() {
-        webView = WKWebView()
-        view = webView
+//        webView = WKWebView()
+//        view = webView
+        
+        view = UIView()
+        view.backgroundColor = .systemBackground
         
         setupLabels()
     }
@@ -69,8 +72,14 @@ class DetailViewController: UIViewController {
         view.addSubview(languageLabel)
         
         currencyLabel.translatesAutoresizingMaskIntoConstraints = false
-        //this isn't working
-        currencyLabel.text = "Currency: \(country.currencies?.name ?? "No value")"
+        //
+        if let currencyDict = country.currencies,
+           let currencyCode = currencyDict.keys.first,
+           let currency = currencyDict[currencyCode] {
+            currencyLabel.text = "Currency: \(currency.name ?? "") (\(currency.symbol ?? ""))"
+        } else {
+            currencyLabel.text = "Currency: No value"
+        }
         view.addSubview(currencyLabel)
         
         

@@ -13,10 +13,10 @@ struct Country: Codable {
     var region: String
     var subregion: String?
     var languages: [String: String]?
-    var flag: String
+    var flag: String?
     var population: Int
     var flags: Flags?
-    var currencies: Currencies?
+    var currencies: [String: Currencies]?
     var capital: [String]?
 }
 
@@ -41,6 +41,7 @@ struct Currencies: Codable {
     var name: String?
     var symbol: String?
 }
+
 
 
 struct Flags: Codable {

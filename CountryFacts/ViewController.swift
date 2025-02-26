@@ -118,7 +118,8 @@ class ViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let country = countries[indexPath.row]
-        cell.textLabel?.text = "\(country.flag) \(country.name.common)"
+        cell.textLabel?.text = "\(country.flag ?? "No value") \(country.name.common)"
+        
         
 
 
